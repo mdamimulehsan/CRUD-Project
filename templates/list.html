@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricketer List</title>
+
+
+    <link rel="stylesheet" href="{% static 'assets/list.css' %}">
+
+</head>
+<body>
+
+
+
+    <header>
+        <section class="navigation">
+          <div class="nav-container">
+            <nav>
+              <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
+              <ul class="nav-list">
+                
+                <li>
+                  <a href="list.html">Cricketer List</a>
+                </li>
+                
+                <li>
+                  <a href="{% url 'app:create' %}">Create</a>
+                </li>
+                
+              </ul>
+            </nav>
+          </div>
+        </section>
+      </header>
+    {% if message == 'h' %}
+    <div class="headline m-5">
+        <h1>There are no cricketers listed here.</h1>
+        <h2><a href="">Click here for add cricketers</a></h2>
+    </div>
+    {% else %}
+    <div class="container">
+        <table class="responsive-table">
+          <caption>Cricketer List</caption>
+          <thead>
+            <tr>
+              <th scope="col">Full Name</th>
+              <th scope="col">Playing Role </th>
+              <th scope="col">Action</th>
+            </tr>
+        </thead>
+          <tbody>
+          {% for x in cricketers %}
+            <tr>
+              <th scope="row">{{ x.name }}</th>
+              <td data-title="Playing Role">{{ x.role}} </td>
+              <td> <button class="btn"><a href="{% url 'app:update' x.id %}">update</a></button><button class="btn"><a href="{% url 'app:delete' x.id %}">delete</a></button></td>
+              
+            </tr>
+            {% endfor %}
+{#            <tr>#}
+{#              <th scope="row">Frozen II</th>#}
+{#              <td data-title="Released">2019</td>#}
+{#              #}
+{#            </tr>#}
+{#            <tr>#}
+{#              <th scope="row">Frozen</th>#}
+{#              <td data-title="Released">2013</td>#}
+{##}
+{#            </tr>#}
+{#             <tr>#}
+{#              <th scope="row">Incredibles 2</th>#}
+{#              <td data-title="Released">2018</td>#}
+{#              #}
+{#            </tr>#}
+{#            <tr>#}
+{#              <th scope="row">Minions</th>#}
+{#              <td data-title="Released">2015</td>#}
+{#              #}
+{#            </tr>#}
+{#            <tr>#}
+{#              <th scope="row">Toy Story 4</th>#}
+{#              <td data-title="Released">2019</td>#}
+{##}
+{#            </tr>#}
+{#            <tr>#}
+{#              <th scope="row">Toy Story 3</th>#}
+{#              <td data-title="Released">2010</td>#}
+{#              #}
+{#            </tr>#}
+{#            <tr>#}
+{#              <th scope="row">Despicable Me 3</th>#}
+{#              <td data-title="Released">2017</td>#}
+{#              #}
+{#            </tr>#}
+{#            <tr>#}
+{#              <th scope="row">Finding Dory</th>#}
+{#              <td data-title="Released">2016</td>#}
+{#              #}
+{#            </tr>#}
+{#            <tr>#}
+{#              <th scope="row">Zootopia</th>#}
+{#              <td data-title="Released">2016</td>#}
+{#              #}
+{#            </tr>#}
+          </tbody>
+        </table>
+      </div>
+    {% endif %}
+</body>
+</html>

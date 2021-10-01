@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>SignUp Form</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Custom Theme files -->
+<link href="{% static 'assets/signup.css' %}" rel="stylesheet" type="text/css" media="all" />
+<!-- //Custom Theme files -->
+<!-- web font -->
+<link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+<!-- //web font -->
+</head>
+<body>
+    <header>
+        <section class="navigation">
+          <div class="nav-container">
+
+            <nav>
+              <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
+              <ul class="nav-list">
+                
+                <li>
+                  <a href="{% url 'app:home' %}">Cricketer List</a>
+                </li>
+                
+                <li>
+                  <a href="{% url 'app:create' %}">Create</a>
+                </li>
+                
+              </ul>
+            </nav>
+          </div>
+        </section>
+      </header>
+
+	<!-- main -->
+	<div class="main-w3layouts wrapper">
+		<h1>Cricketer Form</h1>
+		<div class="main-agileinfo">
+			<div class="agileits-top">
+				<form action="{% url 'app:update' id %}" method="post" >
+                    {% csrf_token %}
+                    <input class="text" type="text" name="Fullname" placeholder="Fullname" required="" value="{{ name }}">
+                    <input class="text" type="text" name="PlayingRole" placeholder="PlayingRole" required="" value="{{ role }}">
+					
+					<input type="submit" class="btn btn-primary btn-block btn-large" value="Update Cricketer">
+                </form>
+			</div>
+		</div>
+		<ul class="colorlib-bubbles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<!-- //main -->
+</body>
+</html>
